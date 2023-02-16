@@ -15,7 +15,7 @@ if [ ! "$(grep -ir "direnv hook bash" ~/.bashrc)" ];then echo 'eval "$(direnv ho
 make env prepare
 ```
 
-## Testing ansible-certbot-role execution in vagrant-docker environment
+## Testing ansible-role-certbot execution in vagrant-docker environment
 
 ```shell
 make test-docker
