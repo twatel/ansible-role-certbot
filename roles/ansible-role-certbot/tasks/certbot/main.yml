@@ -1,0 +1,27 @@
+---
+- name: Ensure SSL certificate not already exist
+  stat:
+    path: "/etc/letsencrypt/live/{{ certbot_domain_name }}/cert.pem"
+  register: ssl_exist
+
+# return "0" when certificate is valide
+# wc -l instead of grep -c to avoid error when command return is 0
+- name: Ensure SSL certificate validity
+  shell: "ssl-cert-check -c {{ __certbot_ssl_certificate_file }} -x {{ certbot_expiration_interval }} | grep -i 'file' | egrep -i 'expiring|Expired' | wc -l"
+  args:
+    executable: /bin/bash
+  register: validity_check
+  changed_when: false
+  when: ssl_exist.stat.exists
+
+- name: APPLY - Certbot
+  when: 
+    - not ssl_exist.stat.exists or validity_check.stdout != "0"
+  block:
+    - name: Certbot with OVH DNS access
+      include_tasks: _ovh.yml
+      when: (certbot_dns_provider | lower) == "ovh"
+
+    - name: Certbot with OVH DNS access
+      include_tasks: _aws.yml
+      when: (certbot_dns_provider | lower) == "aws"

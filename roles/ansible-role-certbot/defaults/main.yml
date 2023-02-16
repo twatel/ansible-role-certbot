@@ -1,0 +1,21 @@
+---
+# Domain name of the SSL certificate
+certbot_domain_name: "my-useless-domain.42"
+certbot_account_email: "user@my-domain.fr"
+
+certbot_expiration_interval: "15"
+
+certbot_service_to_restart: ""
+
+certbot_dry_run: true
+
+certbot_dns_provider: "ovh"
+
+# OVH DNS provider
+certbot_ovh_api_file_location: "~/.ovhapi"
+certbot_ovh_dns_endpoint: ""
+certbot_ovh_dns_application_key: ""
+certbot_ovh_dns_consumer_key: ""
+certbot_ovh_dns_application_secret: ""
+
+# AWS route 53 not implemented yet
