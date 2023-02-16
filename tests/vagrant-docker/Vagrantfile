@@ -1,0 +1,60 @@
+hosts = [
+    {
+      :name => "basenode1",
+      :host => 23221,
+      :image => "xorma/debian11-sb",
+      :ip => "172.20.128.2",
+      :netmask => "24",
+    }
+]
+Vagrant.configure("2") do |config|
+  # Common settings
+  config.ssh.insert_key = true
+  config.ssh.forward_agent = false
+  config.ssh.username = 'vagrant'
+  config.ssh.private_key_path = 'secrets/id_ed25519'
+  config.ssh.shell = "sh"
+
+  hosts.each do |host|
+    config.vm.define host[:name] do |machine|
+      machine.vm.hostname = host[:name]
+      machine.vm.network :private_network,
+        ip: host[:ip],
+        netmask: host[:netmask],
+        docker_network__internal: true
+      machine.vm.network :forwarded_port,
+        guest: 22,
+        host: host[:host],
+        id: "ssh",
+        auto_correct: true
+
+      machine.vm.synced_folder '.', '/vagrant', disabled: true
+
+      machine.vm.provider :docker do |docker|
+        docker.image = host[:image]
+        docker.pull = true
+        docker.has_ssh = true
+        docker.remains_running = false
+        docker.name = host[:name]
+        docker.create_args = [
+          '--privileged',
+          '-it',
+          '-v',
+          "#{ENV['TEST_DOCKER_DIRECTORY']}/secrets:/home/vagrant/.ssh"
+
+        ]
+      end
+
+      if host[:name] == hosts.last[:name]
+        machine.vm.provision :ansible do |ansible|
+          ansible.host_key_checking = false
+          ansible.limit = "all"
+          ansible.playbook = "tests.yml"
+          ansible.inventory_path = "hosts"
+          # to enable ansible playbook verbose mode, uncomment the line below
+          # ansible.raw_arguments  = ["-v"]
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,11 @@
+---
+certbot_domain_name: "{{ lookup('env', 'OVH_DOMAIN_NAME') }}"
+
+certbot_dry_run: true
+
+certbot_dns_provider: "ovh"
+
+certbot_ovh_dns_endpoint: "{{ lookup('env', 'OVH_DNS_ENDPOINT') }}"
+certbot_ovh_dns_application_key: "{{ lookup('env', 'OVH_DNS_APPLICATION_KEY') }}"
+certbot_ovh_dns_consumer_key: "{{ lookup('env', 'OVH_DNS_CONSUMER_KEY') }}"
+certbot_ovh_dns_application_secret: "{{ lookup('env', 'OVH_DNS_APPLICATION_SECRET') }}"

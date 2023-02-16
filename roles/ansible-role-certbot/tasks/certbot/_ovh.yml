@@ -1,0 +1,38 @@
+---
+- name: Create ovh api file access
+  copy:
+    dest: "{{ certbot_ovh_api_file_location }}"
+    mode: 0600
+    content: |
+          dns_ovh_endpoint = {{ certbot_ovh_dns_endpoint | regex_replace('\"', '') }}
+          dns_ovh_application_key = {{ certbot_ovh_dns_application_key | regex_replace('\"', '') }}
+          dns_ovh_consumer_key = {{ certbot_ovh_dns_consumer_key | regex_replace('\"', '') }}
+          dns_ovh_application_secret = {{ certbot_ovh_dns_application_secret | regex_replace('\"', '') }}    
+
+- name: Certbot command apply
+  shell: >-
+    certbot certonly --dns-ovh\
+                     --dns-ovh-credentials {{ certbot_ovh_api_file_location }}\
+                     --non-interactive\
+                     --agree-tos\
+                     --email {{ certbot_account_email }} -d *.{{ certbot_domain_name }} -d {{ certbot_domain_name }}\
+                     --force-renewal\
+                     {% if certbot_dry_run %} --dry-run {% endif %}
+  register: certbot_return
+
+- name: Debug certbot command return just to have an ouput
+  debug:
+    var: certbot_return.stdout_lines
+
+- name: Restart {{ certbot_service_to_restart }}
+  service:
+    name: "{{ certbot_service_to_restart }}"
+    state: restarted
+  when: 
+    - certbot_service_to_restart is defined
+    - (certbot_service_to_restart | length) > 0
+
+- name: Remove ovh api file access after certbot command apply
+  file:
+    path: "{{ certbot_ovh_api_file_location }}"
+    state: absent
