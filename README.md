@@ -28,7 +28,7 @@ make test-docker
 * ``certbot_service_to_restart``: the service to restart to apply the new certificate (can be empty)  
 * ``certbot_dry_run``: test "renew" or "certonly" without saving any certificates to disk (usefull for testing this role application before deploy in production)  
 
-### OVH as provider
+### OVH as DNS provider
 * ``certbot_ovh_api_file_location``: ovh api file location where will be store the OVH credentials for DNS challenge  
 * ``certbot_ovh_dns_endpoint``: ovh api dns_endpoint  
 * ``certbot_ovh_dns_application_key``: ovh api application_key  
