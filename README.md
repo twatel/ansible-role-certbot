@@ -3,7 +3,7 @@
 This role has goal to create or renew let's encrypt certificate with certbot client  
 
 This role support :  
-  - certbot DNS-01 with OVH as DNS provider  
+  - certbot DNS-01 challenge with OVH as DNS provider  
 
 ## Setup development environment
 
@@ -38,8 +38,8 @@ make test-docker
 ## An example of variable file 
 ```yaml
 ---
-certbot_domain_name: "my-useless-domain.42"
-certbot_account_email: "user@my-domain.42"
+certbot_domain_name: "my-useless-domain.fr"
+certbot_account_email: "user@my-domain.fr"
 
 certbot_expiration_interval: "15"
 
