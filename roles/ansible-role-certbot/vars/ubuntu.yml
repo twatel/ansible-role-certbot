@@ -1,0 +1,7 @@
+---
+__certbot_required_apt_packages: 
+  - ssl-cert-check
+  - dnsutils
+  - curl
+  - python3
+  - python3-pip
