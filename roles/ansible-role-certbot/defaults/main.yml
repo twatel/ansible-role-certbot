@@ -1,6 +1,6 @@
 ---
 # Domain name of the SSL certificate
-certbot_domain_name: "my-useless-domain.42"
+certbot_domain_name: "my-domain.fr"
 certbot_account_email: "user@my-domain.fr"
 
 certbot_expiration_interval: "15"
@@ -9,7 +9,11 @@ certbot_service_to_restart: ""
 
 certbot_dry_run: true
 
+# DNS provider to use (ovh or route53)
 certbot_dns_provider: "ovh"
+
+# The number of seconds to wait for DNS to propagate before asking the ACME server to verify the DNS record
+certbot_propagation_seconds: "30"
 
 # OVH DNS provider
 certbot_ovh_api_file_location: "~/.ovhapi"
@@ -18,4 +22,7 @@ certbot_ovh_dns_application_key: ""
 certbot_ovh_dns_consumer_key: ""
 certbot_ovh_dns_application_secret: ""
 
-# AWS route 53 not implemented yet
+# Route53 (AWS) DNS provider
+certbot_route53_aws_region: ""
+certbot_route53_aws_access_key_id: ""
+certbot_route53_aws_secret_access_key_id: ""

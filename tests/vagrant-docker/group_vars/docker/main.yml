@@ -1,11 +1,17 @@
 ---
-certbot_domain_name: "{{ lookup('env', 'OVH_DOMAIN_NAME') }}"
+certbot_domain_name: "{{ lookup('env', 'CERTBOT_DOMAIN_NAME') }}"
 
 certbot_dry_run: true
 
 certbot_dns_provider: "ovh"
 
+# OVH as DNS provider
 certbot_ovh_dns_endpoint: "{{ lookup('env', 'OVH_DNS_ENDPOINT') }}"
 certbot_ovh_dns_application_key: "{{ lookup('env', 'OVH_DNS_APPLICATION_KEY') }}"
 certbot_ovh_dns_consumer_key: "{{ lookup('env', 'OVH_DNS_CONSUMER_KEY') }}"
 certbot_ovh_dns_application_secret: "{{ lookup('env', 'OVH_DNS_APPLICATION_SECRET') }}"
+
+# AWS as DNS provider
+certbot_route53_aws_region: "{{ lookup('env', 'AWS_REGION') }}"
+certbot_route53_aws_access_key_id: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+certbot_route53_aws_secret_access_key_id: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
