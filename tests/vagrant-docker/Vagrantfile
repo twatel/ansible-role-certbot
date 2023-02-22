@@ -5,6 +5,13 @@ hosts = [
       :image => "xorma/debian11-sb",
       :ip => "172.20.128.2",
       :netmask => "24",
+    },
+    {
+      :name => "basenode2",
+      :host => 23222,
+      :image => "xorma/ubuntu22-sb",
+      :ip => "172.20.128.3",
+      :netmask => "24",
     }
 ]
 Vagrant.configure("2") do |config|

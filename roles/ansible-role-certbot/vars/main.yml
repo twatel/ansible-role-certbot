@@ -7,3 +7,5 @@ __certbot_vars_precedence:
   - "{{ ansible_os_family | lower }}.yml"
 
 __certbot_ssl_certificate_file: "/etc/letsencrypt/live/{{ certbot_domain_name }}/cert.pem"
+
+__certbot_dns_provider_package: "python3-certbot-dns-{{ certbot_dns_provider }}"

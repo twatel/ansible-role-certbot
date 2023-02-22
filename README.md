@@ -3,7 +3,8 @@
 This role has goal to create or renew let's encrypt certificate with certbot client  
 
 This role support :  
-  - certbot DNS-01 with OVH as DNS provider  
+  - certbot DNS-01 challenge with OVH as DNS provider  
+  - certbot DNS-01 challenge with route53 (AWS) as DNS provider  
 
 ## Setup development environment
 
@@ -35,11 +36,16 @@ make test-docker
 * ``certbot_ovh_dns_consumer_key``: ovh api consumer_key  
 * ``certbot_ovh_dns_application_secret``: ovh api application_secret  
 
+### AWS as DNS provider
+* ``certbot_route53_aws_region``: aws region  
+* ``certbot_route53_aws_access_key_id``: aws user access key  
+* ``certbot_route53_aws_secret_access_key_id``: aws user secret access key  
+
 ## An example of variable file 
 ```yaml
 ---
-certbot_domain_name: "my-useless-domain.42"
-certbot_account_email: "user@my-domain.42"
+certbot_domain_name: "my-useless-domain.fr"
+certbot_account_email: "user@my-domain.fr"
 
 certbot_expiration_interval: "15"
 
@@ -48,6 +54,7 @@ certbot_service_to_restart: "apache2"
 certbot_dry_run: true
 
 certbot_dns_provider: "ovh"
+
 certbot_ovh_dns_endpoint: "ovh-eu"
 certbot_ovh_dns_application_key: "my_ovh_application_key"
 certbot_ovh_dns_consumer_key: "my_ovh_consumer_key"
@@ -58,5 +65,7 @@ certbot_ovh_dns_application_secret: "my_ovh_application_secret"
 ```shell
 make help
 ```
+
+**! The AWS route 53 apply didn't be tested yet !**  
 
 Enjoy :) 
