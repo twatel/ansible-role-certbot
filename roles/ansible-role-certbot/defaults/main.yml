@@ -1,6 +1,6 @@
 ---
 # Domain name of the SSL certificate
-certbot_domain_name: "my-useless-domain.42"
+certbot_domain_name: "my-domain.fr"
 certbot_account_email: "user@my-domain.fr"
 
 certbot_expiration_interval: "15"
