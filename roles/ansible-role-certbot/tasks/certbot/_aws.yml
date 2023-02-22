@@ -1,4 +1,27 @@
 ---
-- name: Debug
+- name: Certbot command apply
+  shell: >-
+    certbot certonly --dns-route53\
+                     --non-interactive\
+                     --agree-tos\
+                     --email {{ certbot_account_email }} -d *.{{ certbot_domain_name }} -d {{ certbot_domain_name }}\
+                     --dns-route53-propagation-seconds {{ certbot_propagation_seconds }}\
+                     --force-renewal\
+                     {% if certbot_dry_run %} --dry-run {% endif %}
+  environment:
+    AWS_REGION: "{{ certbot_route53_aws_region }}"
+    AWS_ACCESS_KEY_ID: "{{ certbot_route53_aws_access_key_id }}"
+    AWS_SECRET_ACCESS_KEY: "{{ certbot_route53_aws_secret_access_key_id }}"
+  register: certbot_return
+
+- name: Debug certbot command return just to have an ouput
   debug:
-    msg: "aws route 53 not implemented yet !"
+    var: certbot_return.stdout_lines
+
+- name: Restart {{ certbot_service_to_restart }}
+  service:
+    name: "{{ certbot_service_to_restart }}"
+    state: restarted
+  when: 
+    - certbot_service_to_restart is defined
+    - (certbot_service_to_restart | length) > 0

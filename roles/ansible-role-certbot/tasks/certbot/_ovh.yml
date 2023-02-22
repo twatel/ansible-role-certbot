@@ -2,7 +2,7 @@
 - name: Create ovh api file access
   copy:
     dest: "{{ certbot_ovh_api_file_location }}"
-    mode: 0600
+    mode: "0600"
     content: |
           dns_ovh_endpoint = {{ certbot_ovh_dns_endpoint | regex_replace('\"', '') }}
           dns_ovh_application_key = {{ certbot_ovh_dns_application_key | regex_replace('\"', '') }}
@@ -16,6 +16,7 @@
                      --non-interactive\
                      --agree-tos\
                      --email {{ certbot_account_email }} -d *.{{ certbot_domain_name }} -d {{ certbot_domain_name }}\
+                     --dns-ovh-propagation-seconds {{ certbot_propagation_seconds }}\
                      --force-renewal\
                      {% if certbot_dry_run %} --dry-run {% endif %}
   register: certbot_return
