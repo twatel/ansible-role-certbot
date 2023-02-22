@@ -11,5 +11,5 @@
 
 - name: Install Certbot APT package
   apt:
-    name: python3-certbot-dns-ovh
+    name: "{{ __certbot_dns_provider_package }}"
     state: latest
