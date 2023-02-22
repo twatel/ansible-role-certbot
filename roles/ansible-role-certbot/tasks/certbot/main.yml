@@ -18,10 +18,10 @@
   when: 
     - not ssl_exist.stat.exists or validity_check.stdout != "0"
   block:
-    - name: Certbot with OVH DNS access
+    - name: Certbot with OVH as DNS provider
       include_tasks: _ovh.yml
       when: (certbot_dns_provider | lower) == "ovh"
 
-    - name: Certbot with OVH DNS access
+    - name: Certbot with route53(AWS) as DNS provider
       include_tasks: _aws.yml
-      when: (certbot_dns_provider | lower) == "aws"
+      when: (certbot_dns_provider | lower) == "route53"
