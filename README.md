@@ -66,6 +66,6 @@ certbot_ovh_dns_application_secret: "my_ovh_application_secret"
 make help
 ```
 
-**! The AWS route 53 apply didn't been tested yet !**  
+**! The AWS route 53 apply didn't be tested yet !**  
 
 Enjoy :) 
