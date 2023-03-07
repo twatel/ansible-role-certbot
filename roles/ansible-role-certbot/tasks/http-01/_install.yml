@@ -1,0 +1,15 @@
+---
+- name: Ensure apt cache
+  apt:
+    update_cache: true
+  changed_when: false
+
+- name: Install APT dependencies
+  apt:
+    name: "{{ __certbot_required_apt_packages }}"
+    state: present
+
+- name: Install Certbot APT package
+  apt:
+    name: "{{ __certbot_http_provider_package  }}"
+    state: latest
