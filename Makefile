@@ -52,10 +52,15 @@ prepare: header ## Install ansible-galaxy requirements
 ## —————————————— TESTS ———————————————————————————————————————————————————————————
 ##
 .PHONY: test-docker
-test-docker: ## Test ansible-role-certbot in docker-vagrant environment
-	@echo -e "${Blue}==> Testing ansible-role-certbot in docker-vagrant environment${Color_Off}"
+test-docker: ## Test ansible-role-certbot in docker-vagrant environment with DNS-01
+	@echo -e "${Blue}==> Testing ansible-role-certbot in docker-vagrant environment with DNS-01${Color_Off}"
 	@source .env.vagrant
 	@cd ${TEST_DOCKER_DIRECTORY} && vagrant up && vagrant provision
+
+.PHONY: test-aws
+test-aws: ## Test ansible-role-certbot in aws environment with HTTP-01
+	@echo -e "${Blue}==> Testing ansible-role-certbot in aws environment with HTTP-01${Color_Off}"
+	@cd ${TEST_AWS_DIRECTORY} && ansible-playbook tests.yml
 
 ##
 ## —————————————— CLEAN ———————————————————————————————————————————————————————————

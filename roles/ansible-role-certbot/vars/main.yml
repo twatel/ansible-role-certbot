@@ -1,11 +1,9 @@
 ---
 __certbot_vars_precedence:
-  - "{{ ansible_distribution | lower }}_{{ ansible_distribution_major_version }}_{{ ansible_architecture | lower }}.yml"
-  - "{{ ansible_distribution | lower }}_{{ ansible_architecture | lower }}.yml"
-  - "{{ ansible_distribution | lower }}_{{ ansible_distribution_major_version }}.yml"
-  - "{{ ansible_distribution | lower }}.yml"
-  - "{{ ansible_os_family | lower }}.yml"
+  - "{{ certbot_challenge_method }}/{{ ansible_distribution | lower }}_{{ ansible_distribution_major_version }}_{{ ansible_architecture | lower }}.yml"
+  - "{{ certbot_challenge_method }}/{{ ansible_distribution | lower }}_{{ ansible_architecture | lower }}.yml"
+  - "{{ certbot_challenge_method }}/{{ ansible_distribution | lower }}_{{ ansible_distribution_major_version }}.yml"
+  - "{{ certbot_challenge_method }}/{{ ansible_distribution | lower }}.yml"
+  - "{{ certbot_challenge_method }}/{{ ansible_os_family | lower }}.yml"
 
 __certbot_ssl_certificate_file: "/etc/letsencrypt/live/{{ certbot_domain_name }}/cert.pem"
-
-__certbot_dns_provider_package: "python3-certbot-dns-{{ certbot_dns_provider }}"

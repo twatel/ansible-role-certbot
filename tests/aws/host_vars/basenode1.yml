@@ -1,0 +1,10 @@
+---
+# Certbot certificate
+certbot_domain_name: "{{ lookup('env', 'CERTBOT_DOMAIN_NAME') }}"
+certbot_dry_run: true
+
+# Certbot method challenge
+certbot_challenge_method: "http-01"
+
+# Certbot HTTP provider
+certbot_http_provider: "apache"
