@@ -16,7 +16,7 @@
                      --non-interactive\
                      --agree-tos\
                      --email {{ certbot_account_email }} -d *.{{ certbot_domain_name }} -d {{ certbot_domain_name }}\
-                     --dns-ovh-propagation-seconds {{ certbot_propagation_seconds }}\
+                     --dns-ovh-propagation-seconds {{ certbot_dns_propagation_seconds }}\
                      --force-renewal\
                      {% if certbot_dry_run %} --dry-run {% endif %}
   register: certbot_return

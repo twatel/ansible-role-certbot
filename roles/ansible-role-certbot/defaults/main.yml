@@ -1,28 +1,69 @@
 ---
+#
+# Certbot certificate part
+#
+
 # Domain name of the SSL certificate
-certbot_domain_name: "my-domain.fr"
+certbot_domain_name: "my-useless-domain.fr"
+
+# Email of certbot account
 certbot_account_email: "user@my-domain.fr"
 
+# Expiration interval before certificate renew
 certbot_expiration_interval: "15"
 
+# Service to restart when certificate is used by an service
 certbot_service_to_restart: ""
 
+# Enable certbot dry-run for testing
 certbot_dry_run: true
 
+#
+# Certbot method challenge
+# 
+
+# http-01 or dns-01
+certbot_challenge_method: "http-01"
+
+#
+# Certbot HTTP provider for http-01 challenge
+#
+
+# apache or nginx
+certbot_http_provider: "apache"
+
+#
+# Certbot DNS provider for dns-01 challenge
+#
+
 # DNS provider to use (ovh or route53)
-certbot_dns_provider: "ovh"
+# certbot_dns_provider: "ovh"
 
 # The number of seconds to wait for DNS to propagate before asking the ACME server to verify the DNS record
-certbot_propagation_seconds: "30"
+# certbot_dns_propagation_seconds: "30"
 
-# OVH DNS provider
-certbot_ovh_api_file_location: "~/.ovhapi"
-certbot_ovh_dns_endpoint: ""
-certbot_ovh_dns_application_key: ""
-certbot_ovh_dns_consumer_key: ""
-certbot_ovh_dns_application_secret: ""
+#
+# OVH as DNS provider
+#
 
-# Route53 (AWS) DNS provider
-certbot_route53_aws_region: ""
-certbot_route53_aws_access_key_id: ""
-certbot_route53_aws_secret_access_key_id: ""
+# ovh api file location for DNS authentication
+# certbot_ovh_api_file_location: "~/.ovhapi"
+
+# ovh dns token endpoint
+# certbot_ovh_dns_endpoint: ""
+
+# ovh dns token application key
+# certbot_ovh_dns_application_key: ""
+
+# ovh dns token consumer key
+# certbot_ovh_dns_consumer_key: ""
+
+# ovh dns token application secret
+# certbot_ovh_dns_application_secret: ""
+
+#
+# Route53 (AWS) as DNS provider
+#
+# certbot_route53_aws_region: ""
+# certbot_route53_aws_access_key_id: ""
+# certbot_route53_aws_secret_access_key_id: ""

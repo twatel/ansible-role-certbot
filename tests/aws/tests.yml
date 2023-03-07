@@ -1,0 +1,25 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Testing ansible role certbot apply
+  hosts: basenode1
+  gather_facts: yes
+  become: yes
+
+  pre_tasks:
+    - name: "Install {{ ansible_pretasks_packages }} for HTTP-01 challenge"
+      apt:
+        name: "{{ ansible_pretasks_packages }}"
+        state: present
+        update_cache: true
+      changed_when: false
+
+  roles:
+    - ansible-role-certbot
+  
+  post_tasks:
+    - name: "Remove {{ ansible_pretasks_packages }} for HTTP-01 challenge"
+      apt:
+        name: "{{ ansible_pretasks_packages }}"
+        state: absent
+        update_cache: true
+      changed_when: false

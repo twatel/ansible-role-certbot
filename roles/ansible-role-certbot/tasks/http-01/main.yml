@@ -1,0 +1,6 @@
+---
+- name: Install ansible-role-certbot APT dependencies
+  include_tasks: _install.yml
+
+- name: Create let's encrypt certificate
+  include_tasks: certbot/main.yml
