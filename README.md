@@ -112,7 +112,7 @@ certbot_http_provider: "apache"
 certbot_domain_name: "my-useless-domain.fr"
 certbot_account_email: "user@my-domain.fr"
 certbot_expiration_interval: "15"
-certbot_service_to_restart: "apache2"
+certbot_service_to_restart: "nginx"
 certbot_dry_run: true
 
 certbot_challenge_method: "http-01"
