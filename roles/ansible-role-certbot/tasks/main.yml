@@ -9,3 +9,33 @@
 
 - name: Load certbot specific method tasks
   include_tasks: "{{ certbot_challenge_method }}/main.yml"
+
+- name: Create certbot pre-hooks script
+  copy:
+    content: |
+      {{ certbot_pre_hooks_script }}
+    dest: "{{ __certbot_renewal_pre_hooks_dir }}/pre_hooks.sh"
+    mode: 0755
+  when:
+    - certbot_pre_hooks_script is defined
+    - certbot_pre_hooks_script | length > 0
+
+- name: Create certbot deploy-hooks script
+  copy:
+    content: |
+      {{ certbot_deploy_hooks_script }}
+    dest: "{{ __certbot_renewal_deploy_hooks_dir }}/deploy_hooks.sh"
+    mode: 0755
+  when:
+    - certbot_deploy_hooks_script is defined
+    - certbot_deploy_hooks_script | length > 0
+
+- name: Create certbot post-hooks script
+  copy:
+    content: |
+      {{ certbot_post_hooks_script }}
+    dest: "{{ __certbot_renewal_post_hooks_dir }}/post_hooks.sh"
+    mode: 0755
+  when:
+    - certbot_post_hooks_script is defined
+    - certbot_post_hooks_script | length > 0

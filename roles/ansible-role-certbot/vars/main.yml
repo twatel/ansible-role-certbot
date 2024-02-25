@@ -6,4 +6,10 @@ __certbot_vars_precedence:
   - "{{ certbot_challenge_method }}/{{ ansible_distribution | lower }}.yml"
   - "{{ certbot_challenge_method }}/{{ ansible_os_family | lower }}.yml"
 
-__certbot_ssl_certificate_file: "/etc/letsencrypt/live/{{ certbot_domain_name }}/cert.pem"
+__certbot_ssl_certificate_dir: "/etc/letsencrypt/live/{{ certbot_domain_name }}"
+__certbot_ssl_certificate_file: "{{ __certbot_ssl_certificate_dir }}/cert.pem"
+
+__certbot_renewal_hooks_dir: "/etc/letsencrypt/renewal-hooks"
+__certbot_renewal_pre_hooks_dir: "{{ __certbot_renewal_hooks_dir }}/pre"
+__certbot_renewal_deploy_hooks_dir: "{{ __certbot_renewal_hooks_dir }}/deploy"
+__certbot_renewal_post_hooks_dir: "{{ __certbot_renewal_hooks_dir }}/post"
