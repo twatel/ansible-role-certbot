@@ -122,7 +122,7 @@ certbot_http_provider: "nginx"
 
 ## Good to know 
 ### Certbot renewal-hooks
-If you need to execute some commands during apply (These scripts will be stored in **/etc/letsencrypt/renewal-hooks/pre|deploy|post** directories) :  
+If you need to execute some commands during apply : (These scripts will be stored in **/etc/letsencrypt/renewal-hooks/pre|deploy|post** directories)  
 ```yaml
 certbot_pre_hooks_script: |
   #!/bin/bash
