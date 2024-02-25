@@ -4,6 +4,7 @@ This role has goal to create or renew let's encrypt certificate with certbot cli
 
 This role support :  
   - certbot DNS-01 challenge with OVH as DNS provider  
+  - certbot DNS-01 challenge with AWS as DNS provider (not tested yet)
   - certbot HTTP-01 challenge with Apache as HTTP web server  
   - certbot HTTP-01 challenge with Nginx as HTTP web server   
 
