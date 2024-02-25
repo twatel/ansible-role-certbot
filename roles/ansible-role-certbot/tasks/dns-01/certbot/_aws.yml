@@ -24,4 +24,4 @@
     state: restarted
   when: 
     - certbot_service_to_restart is defined
-    - (certbot_service_to_restart | length) > 0
+    - certbot_service_to_restart | length > 0
