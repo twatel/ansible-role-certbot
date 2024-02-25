@@ -118,6 +118,7 @@ certbot_challenge_method: "http-01"
 certbot_http_provider: "nginx"
 ```
 
+## Good to know 
 ### Certbot renewal-hooks
 If you need to execute some commands during apply :  
 ```yaml
@@ -125,7 +126,7 @@ certbot_pre_hooks_script: |
   #!/bin/bash
 
   echo certbot_pre_hooks_script > /tmp/pre_hooks.txt
-  
+
 certbot_deploy_hooks_script: |
   #!/bin/bash
 
