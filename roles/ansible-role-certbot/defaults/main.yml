@@ -41,7 +41,7 @@ certbot_challenge_method: "http-01"
 # apache or nginx
 certbot_http_provider: "apache"
 
-# Certbot default http port to liste during http-01 challenge
+# Certbot default http port to listen during http-01 challenge
 certbot_http_port: "80"
 
 #############################################
