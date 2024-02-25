@@ -1,9 +1,9 @@
 #!/usr/bin/env ansible-playbook
 ---
-- hosts: docker
+- name: Test ansible-role-certbot apply in docker environment
+  hosts: docker
   gather_facts: true
   become: true
   
   roles:
     - ansible-role-certbot
-    
