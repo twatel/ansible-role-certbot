@@ -34,7 +34,8 @@ make test-docker
 * ``certbot_challenge_method``: challenge method for certificate generation (can be http-01 or dns-01)  
 
 ### HTTP-01 challenge
-* ``certbot_http_provider``: http provider to renew certificate (ban be apache or nginx)  
+* ``certbot_http_provider``: http provider to renew certificate (can be apache or nginx)  
+* ``certbot_http_port``: certbot default http port to listen during http-01 challenge  
 
 ### DNS-01 challenge
 #### OVH as DNS provider
