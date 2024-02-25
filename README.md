@@ -125,10 +125,12 @@ certbot_pre_hooks_script: |
   #!/bin/bash
 
   echo certbot_pre_hooks_script > /tmp/pre_hooks.txt
+  
 certbot_deploy_hooks_script: |
   #!/bin/bash
 
   echo certbot_deploy_hooks_script > /tmp/deploy_hooks.txt
+
 certbot_post_hooks_script: |
   #!/bin/bash
 
