@@ -2,6 +2,10 @@
 
 This role has goal to create or renew let's encrypt certificate with certbot client  
 
+|GitLab|Downloads|Version|
+|------|---------|-------|
+|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-haproxy/badges/master/pipeline.svg)]|[![downloads](https://img.shields.io/ansible/role/d/robertdebock/haproxy)](https://galaxy.ansible.com/robertdebock/haproxy)|[![Version](https://img.shields.io/github/v/release/twatel/ansible-role-certbot.svg)]|
+
 This role support :  
   - certbot DNS-01 challenge with OVH as DNS provider  
   - certbot DNS-01 challenge with AWS route53 as DNS provider (not tested yet)  
