@@ -120,26 +120,6 @@ certbot_challenge_method: "http-01"
 certbot_http_provider: "nginx"
 ```
 
-## Good to know 
-### Certbot renewal-hooks
-If you need to execute some commands during apply : (These scripts will be stored in **/etc/letsencrypt/renewal-hooks/pre|deploy|post** directories)  
-```yaml
-certbot_pre_hooks_script: |
-  #!/bin/bash
-
-  echo certbot_pre_hooks_script > /tmp/pre_hooks.txt
-
-certbot_deploy_hooks_script: |
-  #!/bin/bash
-
-  echo certbot_deploy_hooks_script > /tmp/deploy_hooks.txt
-
-certbot_post_hooks_script: |
-  #!/bin/bash
-
-  echo certbot_post_hooks_script > /tmp/post_hooks.txt
-```
-
 ## Display makefile helper
 ```shell
 make help

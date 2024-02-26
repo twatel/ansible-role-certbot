@@ -9,7 +9,14 @@
     name: "{{ __certbot_required_apt_packages }}"
     state: present
 
-- name: Install Certbot APT package
+- name: Install Certbot APT packages
+  apt:
+    name: "{{ __certbot_http_provider_package }}"
+    state: latest
+  when: certbot_challenge_method == "http-01"
+
+- name: Install Certbot APT packages
   apt:
     name: "{{ __certbot_dns_provider_package }}"
     state: latest
+  when: certbot_challenge_method == "dns-01"

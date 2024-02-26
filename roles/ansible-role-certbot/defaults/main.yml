@@ -18,15 +18,6 @@ certbot_service_to_restart: ""
 # Enable certbot dry-run for testing
 certbot_dry_run: true
 
-#
-## Certbot renewal-hooks script; Look the official certbot's documentation
-#
-certbot_pre_hooks_script: |
-
-certbot_deploy_hooks_script: |
-
-certbot_post_hooks_script: |
-
 ############################
 # Certbot method challenge #
 # ##########################
