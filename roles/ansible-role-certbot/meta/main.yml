@@ -2,7 +2,7 @@
 galaxy_info:
   author: twatel
   description: Ansible role to generate or renew SSL let's encrypt certificate with Certbot
-  company: self
+  company: myself
   license: MIT
   min_ansible_version: 2.11
   #
@@ -14,11 +14,12 @@ galaxy_info:
   - name: Debian
     versions:
     - 11
+    - 12
   - name: Ubuntu
     versions:
     - 22.04
   galaxy_tags:
-  - SSL
+  - ssl
   - certbot
   - letsencrypt
 

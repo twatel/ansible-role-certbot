@@ -57,6 +57,11 @@ test-docker: ## Test ansible-role-certbot in docker-vagrant environment with DNS
 	@source .env.vagrant
 	@cd ${TEST_DOCKER_DIRECTORY} && vagrant up && vagrant provision
 
+.PHONY: test-vbox
+test-vbox: ## Test ansible-role-certbot in vbox-vagrant environment with DNS-01
+	@echo -e "${Blue}==> Testing ansible-role-certbot in vbox-vagrant environment with DNS-01${Color_Off}"
+	@cd ${TEST_DOCKER_DIRECTORY} && vagrant up && vagrant provision
+
 .PHONY: test-aws
 test-aws: ## Test ansible-role-certbot in aws environment with HTTP-01
 	@echo -e "${Blue}==> Testing ansible-role-certbot in aws environment with HTTP-01${Color_Off}"

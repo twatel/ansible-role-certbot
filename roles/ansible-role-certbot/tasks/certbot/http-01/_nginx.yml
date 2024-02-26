@@ -6,6 +6,7 @@
                      --agree-tos\
                      --email {{ certbot_account_email }}\
                      --domains {{ certbot_domain_name }}\
+                     --http-01-port {{ certbot_http_port }}\
                      --force-renewal\
                      {% if certbot_dry_run %} --dry-run {% endif %}    
   register: certbot_return
@@ -20,4 +21,4 @@
     state: restarted
   when: 
     - certbot_service_to_restart is defined
-    - (certbot_service_to_restart | length) > 0
+    - certbot_service_to_restart | length > 0

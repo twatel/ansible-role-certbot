@@ -1,5 +1,7 @@
 .direnv
+.vagrant
 .env.local
+.env.secret
 .env.secrets
 
 secrets

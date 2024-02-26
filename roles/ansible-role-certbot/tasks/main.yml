@@ -7,5 +7,8 @@
   loop_control:
     loop_var: _current_os_vars
 
-- name: Load certbot specific method tasks
-  include_tasks: "{{ certbot_challenge_method }}/main.yml"
+- name: Install ansible-role-certbot APT dependencies
+  include_tasks: inc/_install.yml
+
+- name: APPLY - Generate let's encrypt certificate  
+  include_tasks: "certbot/{{ certbot_challenge_method }}/main.yml"

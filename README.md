@@ -4,7 +4,9 @@ This role has goal to create or renew let's encrypt certificate with certbot cli
 
 This role support :  
   - certbot DNS-01 challenge with OVH as DNS provider  
-  - certbot DNS-01 challenge with route53 (AWS) as DNS provider  
+  - certbot DNS-01 challenge with AWS route53 as DNS provider (not tested yet)  
+  - certbot HTTP-01 challenge with Apache as HTTP web server  
+  - certbot HTTP-01 challenge with Nginx as HTTP web server   
 
 ## Setup development environment
 
@@ -32,7 +34,8 @@ make test-docker
 * ``certbot_challenge_method``: challenge method for certificate generation (can be http-01 or dns-01)  
 
 ### HTTP-01 challenge
-* ``certbot_http_provider``: http provider to renew certificate (ban be apache or nginx)  
+* ``certbot_http_provider``: http provider to renew certificate (can be apache or nginx)  
+* ``certbot_http_port``: certbot default http port to listen during http-01 challenge  
 
 ### DNS-01 challenge
 #### OVH as DNS provider
@@ -109,7 +112,7 @@ certbot_http_provider: "apache"
 certbot_domain_name: "my-useless-domain.fr"
 certbot_account_email: "user@my-domain.fr"
 certbot_expiration_interval: "15"
-certbot_service_to_restart: "apache2"
+certbot_service_to_restart: "nginx"
 certbot_dry_run: true
 
 certbot_challenge_method: "http-01"
