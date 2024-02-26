@@ -6,4 +6,4 @@ __certbot_required_apt_packages:
   - python3
   - python3-pip
 
-__certbot_http_provider_package: "python3-certbot-{{ certbot_http_provider }}"
+__certbot_provider_package: "python3-certbot-{{ certbot_http_provider }}"

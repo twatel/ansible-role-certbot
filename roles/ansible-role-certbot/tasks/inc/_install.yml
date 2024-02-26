@@ -11,12 +11,5 @@
 
 - name: Install Certbot APT packages
   apt:
-    name: "{{ __certbot_http_provider_package }}"
+    name: "{{ __certbot_provider_package }}"
     state: latest
-  when: certbot_challenge_method == "http-01"
-
-- name: Install Certbot APT packages
-  apt:
-    name: "{{ __certbot_dns_provider_package }}"
-    state: latest
-  when: certbot_challenge_method == "dns-01"
