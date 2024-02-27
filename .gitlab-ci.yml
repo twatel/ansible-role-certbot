@@ -13,7 +13,7 @@ before_script:
 
 lint:
   stage: lint
-  tags: 
+  tags:
     - deployment
   script:
     - make lint
