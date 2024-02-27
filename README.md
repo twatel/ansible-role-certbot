@@ -4,7 +4,7 @@ This role has goal to create or renew let's encrypt certificate with certbot cli
 
 |GitLab|Github Downloads|Version|
 |------|----------------|-------|
-|![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-haproxy/badges/master/pipeline.svg)|![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/twatel/ansible-role-certbot/total)|![Version](https://img.shields.io/github/v/release/twatel/ansible-role-certbot.svg)|
+|None|![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/twatel/ansible-role-certbot/total)|![Version](https://img.shields.io/github/v/release/twatel/ansible-role-certbot.svg)|
 
 This role support :  
   - certbot DNS-01 challenge with OVH as DNS provider  
