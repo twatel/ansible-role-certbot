@@ -1,0 +1,25 @@
+variables:
+  CUR_DIR: "$CI_PROJECT_DIR"
+  TERM: "xterm-256color"
+  TERMINFO: "/etc/terminfo"
+  DEBIAN_FRONTEND: "noninteractive"
+
+workflow:
+  name: 'Environment: $WORKSPACE'
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "develop"
+    - if: $CI_COMMIT_REF_NAME == "main"
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+stages:
+  - lint
+
+before_script:
+  - if [ ! "$(grep -ir "direnv export bash" ~/.bashrc)" ];then echo 'eval "$(direnv export bash)"' >> ~/.bashrc; fi && direnv allow . && source ~/.bashrc
+
+lint:
+  stage: lint
+  tags: 
+    - deployment
+  script:
+    - make lint
