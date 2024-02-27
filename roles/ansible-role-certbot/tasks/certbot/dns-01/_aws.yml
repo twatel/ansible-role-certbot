@@ -1,6 +1,6 @@
 ---
 - name: Certbot command apply
-  shell: >-
+  ansible.builtin.shell: >-
     certbot certonly --dns-route53\
                      --non-interactive\
                      --agree-tos\
@@ -15,13 +15,13 @@
   register: certbot_return
 
 - name: Debug certbot command return just to have an ouput
-  debug:
+  ansible.builtin.debug:
     var: certbot_return.stdout_lines
 
 - name: Restart {{ certbot_service_to_restart }}
-  service:
+  ansible.builtin.service:
     name: "{{ certbot_service_to_restart }}"
     state: restarted
-  when: 
+  when:
     - certbot_service_to_restart is defined
     - certbot_service_to_restart | length > 0

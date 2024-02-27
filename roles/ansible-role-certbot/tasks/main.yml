@@ -1,6 +1,6 @@
 ---
 - name: Load os-specific vars
-  include_vars: "{{ _current_os_vars }}"
+  ansible.builtin.include_vars: "{{ _current_os_vars }}"
   with_first_found:
     - skip: true
       files: "{{ __certbot_vars_precedence }}"
@@ -8,7 +8,7 @@
     loop_var: _current_os_vars
 
 - name: Install ansible-role-certbot APT dependencies
-  include_tasks: inc/_install.yml
+  ansible.builtin.include_tasks: inc/_install.yml
 
-- name: APPLY - Generate let's encrypt certificate  
-  include_tasks: "certbot/{{ certbot_challenge_method }}/main.yml"
+- name: APPLY - Generate let's encrypt certificate
+  ansible.builtin.include_tasks: "certbot/{{ certbot_challenge_method }}/main.yml"

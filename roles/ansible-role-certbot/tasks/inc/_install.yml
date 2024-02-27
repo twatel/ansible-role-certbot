@@ -1,15 +1,15 @@
 ---
 - name: Ensure apt cache
-  apt:
+  ansible.builtin.apt:
     update_cache: true
   changed_when: false
 
 - name: Install APT dependencies
-  apt:
+  ansible.builtin.apt:
     name: "{{ __certbot_required_apt_packages }}"
     state: present
 
 - name: Install Certbot APT packages
-  apt:
+  ansible.builtin.apt:
     name: "{{ __certbot_provider_package }}"
-    state: latest
+    state: present

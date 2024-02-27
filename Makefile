@@ -28,26 +28,33 @@ header:
 env: header ## Prepare environment
 	@[ -d "${PWD}/.direnv" ] || (echo "Venv not found: ${PWD}/.direnv" && exit 1)
 	@pip3 install -U pip --no-cache-dir --quiet &&\
-	echo "[  ${Green}OK${Color_Off}  ] ${Yellow}INSTALL${Color_Off} pip3" || \
-	echo "[${Red}FAILED${Color_Off}] ${Yellow}INSTALL${Color_Off} pip3"
+	echo -e "[  ${Green}OK${Color_Off}  ] ${Yellow}INSTALL${Color_Off} pip3" || \
+	echo -e "[${Red}FAILED${Color_Off}] ${Yellow}INSTALL${Color_Off} pip3"
 
 	@pip3 install -U wheel --no-cache-dir --quiet &&\
-	echo "[  ${Green}OK${Color_Off}  ] ${Yellow}INSTALL${Color_Off} wheel" || \
-	echo "[${Red}FAILED${Color_Off}] ${Yellow}INSTALL${Color_Off} wheel"
+	echo -e "[  ${Green}OK${Color_Off}  ] ${Yellow}INSTALL${Color_Off} wheel" || \
+	echo -e "[${Red}FAILED${Color_Off}] ${Yellow}INSTALL${Color_Off} wheel"
 
 	@pip3 install -U setuptools --no-cache-dir --quiet &&\
-	echo "[  ${Green}OK${Color_Off}  ] ${Yellow}INSTALL${Color_Off} setuptools" || \
-	echo "[${Red}FAILED${Color_Off}] ${Yellow}INSTALL${Color_Off} setuptools"
+	echo -e "[  ${Green}OK${Color_Off}  ] ${Yellow}INSTALL${Color_Off} setuptools" || \
+	echo -e "[${Red}FAILED${Color_Off}] ${Yellow}INSTALL${Color_Off} setuptools"
 
 	@pip install -U --no-cache-dir -q -r requirements.txt &&\
-	echo "[  ${Green}OK${Color_Off}  ] ${Yellow}INSTALL${Color_Off} PIP REQUIREMENTS" || \
-	echo "[${Red}FAILED${Color_Off}] ${Yellow}INSTALL${Color_Off} PIP REQUIREMENTS"
+	echo -e "[  ${Green}OK${Color_Off}  ] ${Yellow}INSTALL${Color_Off} PIP REQUIREMENTS" || \
+	echo -e "[${Red}FAILED${Color_Off}] ${Yellow}INSTALL${Color_Off} PIP REQUIREMENTS"
 
 .PHONY: prepare
 prepare: header ## Install ansible-galaxy requirements
 	@echo "***************************** ANSIBLE REQUIREMENTS *****************************"
 	@ansible-galaxy install -fr ${PWD}/requirements.yml
 
+##
+## —————————————— LINT ————————————————————————————————————————————————————————————
+##
+.PHONE: lint
+lint: ## Ansible Linter
+	@ansible-lint -c ./.ansible-lint
+	
 ##
 ## —————————————— TESTS ———————————————————————————————————————————————————————————
 ##

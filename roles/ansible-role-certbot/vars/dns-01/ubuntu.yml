@@ -1,5 +1,5 @@
 ---
-__certbot_required_apt_packages: 
+__certbot_required_apt_packages:
   - ssl-cert-check
   - dnsutils
   - curl
